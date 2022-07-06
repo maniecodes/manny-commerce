@@ -1,7 +1,6 @@
 import {
   createSlice,
   createAsyncThunk,
-  createEntityAdapter,
 } from "@reduxjs/toolkit";
 import { AdminAxios, Axios } from "../../api/instances";
 import * as Api from "../../api/endpoints";
@@ -45,7 +44,7 @@ const createProduct = createAsyncThunk(
       data.append("upload_preset", "Ecommerce Images");
       
       const res = await Axios.post(
-        "https://api.cloudinary.com/v1_1/dw3ap99ie/image/upload",
+        process.env.CLOUDINARY_ID,
         data
       );
       await AdminAxios.post(Api.CREATE_PRODUCT, {
@@ -83,7 +82,7 @@ const editProduct = createAsyncThunk(
       data.append("file", file);
       data.append("upload_preset", "Ecommerce Images");
       const res = await Axios.post(
-        "https://api.cloudinary.com/v1_1/dw3ap99ie/image/upload",
+        process.env.CLOUDINARY_ID,
         data
       );
 
@@ -247,7 +246,7 @@ const adminSlice = createSlice({
         state.authLoading = false;
         NotificationManager.success("Product deleted!");
         state.products = state.products.filter(
-          ({ _id }) => _id != action.payload
+          ({ _id }) => _id !== action.payload
         );
       })
       .addCase(deleteProduct.rejected, (state, action) => {
@@ -292,7 +291,7 @@ const adminSlice = createSlice({
         state.authLoading = false;
         NotificationManager.success("Category deleted!");
         state.categories = state.categories.filter(
-          ({ _id }) => _id != action.payload
+          ({ _id }) => _id !== action.payload
         );
       })
       .addCase(deleteCategory.rejected, (state, action) => {
