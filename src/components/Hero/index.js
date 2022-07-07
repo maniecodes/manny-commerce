@@ -14,7 +14,7 @@ export const Hero = () => {
     >
       <Grid item md={5} xs={12}>
         <Typography variant="h4" className={classes.heading}>
-          What is ReactShop?
+          Buy Top Notch Devices From MannyCommerce Store
         </Typography>
         <Typography className={classes.detail}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus

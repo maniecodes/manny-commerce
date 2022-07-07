@@ -82,20 +82,20 @@ export const Cart = withUserAuth(true)((props) => {
                           <IconButton
                             size="small"
                             onClick={() =>
-                              dispatch(addToCart(item.product._id))
-                            }
-                          >
-                            <AddOutlined />
-                          </IconButton>{" "}
-                          {item.quantity}{" "}
-                          <IconButton
-                            size="small"
-                            onClick={() =>
                               dispatch(decrementFromCart(item.product._id))
                             }
                           >
                             <RemoveOutlined />
                           </IconButton>
+                          {item.quantity}{" "}
+                          <IconButton
+                            size="small"
+                            onClick={() =>
+                              dispatch(addToCart(item.product._id))
+                            }
+                          >
+                            <AddOutlined />
+                          </IconButton>{" "}
                         </>
                       )}
                     </TableCell>

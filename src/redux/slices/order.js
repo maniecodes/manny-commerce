@@ -11,18 +11,7 @@ const initialState = {
   buttonLoading: false,
 };
 
-const createPaymentIntent = createAsyncThunk(
-  "orders/createPaymentIntent",
-  async () => {
-    try {
-      const res = await UserAxios.post(Api.CREATE_PAYMENT_INTENT);
-      return res.data.clientSecret;
-    } catch (error) {
-      history.replace("/cart");
-      throw error;
-    }
-  }
-);
+
 
 const fetchOrders = createAsyncThunk("orders/fetchOrders", async () => {
   const res = await UserAxios.get(Api.GET_ORDERS);
@@ -45,13 +34,6 @@ const ordersSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(createPaymentIntent.pending, (state, action) => {
-        state.contentLoading = true;
-      })
-      .addCase(createPaymentIntent.fulfilled, (state, action) => {
-        state.clientSecret = action.payload;
-        state.contentLoading = false;
-      })
       .addCase(fetchOrders.pending, (state, action) => {
         state.contentLoading = true;
       })
@@ -75,6 +57,6 @@ const ordersSlice = createSlice({
   },
 });
 
-export { createPaymentIntent, fetchOrders, fetchOrder, deleteOrder };
+export { fetchOrders, fetchOrder, deleteOrder };
 
 export default ordersSlice.reducer;

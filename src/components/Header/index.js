@@ -84,7 +84,7 @@ export const Header = () => {
           to="/"
           exact
         >
-          ReactShop
+          MannyCommerce
         </Typography>
 
         <Hidden smDown>

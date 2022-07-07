@@ -11,7 +11,7 @@ export const Footer = (props) => {
       <div>
         <Container maxWidth="xl" className={classes.container}>
           <Typography variant="h5" component={Link} to="/">
-            ReactShop
+            MannyCommerce
           </Typography>
           <Typography component="span">
             Copyright &copy; {new Date().getFullYear()}.
